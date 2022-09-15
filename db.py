@@ -18,7 +18,7 @@ cur = conn.cursor()
 conn.autocommit=True
 
 try:
-    cur.execute("create table newemployees (name varchar(30),lname varchar(30),phone integer,age integer,city varchar(30),salary integer,dept varchar(30))")
+    cur.execute("create table newemployees (fname varchar(30),lname varchar(30),phone integer,age integer,city varchar(30),salary integer,department varchar(30))")
 except exception as y:
     print(y)
 
@@ -48,7 +48,7 @@ while True:
 
 while True:
     ph = input("Enter phone number:")
-    if ph.isnumeric()==False or len(ph)<10:
+    if ph.isnumeric()==False:
         print("Check your input!")
         pass
     else:
@@ -86,17 +86,5 @@ while True:
     else:
         break
 
-#cur.execute("insert into table values (fname,lname,phone,age,city,salary,dept)")
-
-cur.execute("select * from newemployees")
-
-for i in cur:
-    print(i)
-
-'''
-print(f"\nFull Name: {fname} {lname}")
-print(f"Age: {age}")
-print(f"Phone Number: {ph}")
-print(f"City: {city}")
-print(f"Salary: {salary}")
-print(f"Department: {dept}")'''
+cur.execute("""insert into newemployees(fname,lname,phone,age,city,salary,department) values(?,?,?,?,?,?,?)""",(fname,lname,ph,age,city,salary,dept))
+conn.commit()
