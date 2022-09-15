@@ -63,7 +63,7 @@ while True:
         break
 
 
-f.open(employee.)
+
 
 print(f"\nFull Name: {fname} {lname}")
 print(f"Age: {age}")
